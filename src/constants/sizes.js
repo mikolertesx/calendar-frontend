@@ -1,4 +1,4 @@
 export default {
   mobileWidth: '504px',
-  mobileSideBar: '44px'
+  mobileSideBar: '60px'
 }

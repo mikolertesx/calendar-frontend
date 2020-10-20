@@ -18,8 +18,8 @@ const Router =
 function App() {
   return (
     <div className="App">
-      <Layout>
-        <Router>
+      <Router>
+        <Layout>
           <Switch>
             <Route path={Pages.Home} exact={true}>
               <p>Home</p>
@@ -33,10 +33,13 @@ function App() {
             <Route path={Pages.Day}>
               <p>Day</p>
             </Route>
+            <Route path={Pages.Logout}>
+              <Redirect to={Pages.Home} />
+            </Route>
             <Redirect to={Pages.Home} />
           </Switch>
-        </Router>
-      </Layout>
+        </Layout>
+      </Router>
     </div>
   );
 }
