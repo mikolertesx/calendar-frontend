@@ -5,7 +5,6 @@ import Auth from "../auth";
 import NavBar from "./NavigationBar";
 import Main from "./Main";
 
-// TODO Use context for changing state.
 const Layout = ({ children}) => {
   const [authState] = useContext(AuthContext);
   if (!authState) {
