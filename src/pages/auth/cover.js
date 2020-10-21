@@ -1,9 +1,18 @@
-import React, { useContext } from "react";
+import React, { useState } from "react";
 import Div100Vh from "react-div-100vh";
-import { AuthContext } from "../../context/AuthContext";
 import styled from "styled-components";
 import Icons from "../../constants/iconComponents";
 import Colors from "../../constants/colors";
+
+const ParentDiv = styled(Div100Vh)`
+  position: absolute;
+  width: 100%;
+  transition: transform 1s;
+
+  &.hide {
+    transform: translateY(-100%);
+  }
+`;
 
 const Content = styled.div`
   height: 100%;
@@ -69,11 +78,11 @@ const ContentOptionsButton = styled.button`
   cursor: pointer;
 `;
 
-const Cover = () => {
-  const [auth, setAuth] = useContext(AuthContext);
-  console.log(auth);
+const Cover = ({ onSignIn, onLogin }) => {
+  const [hide, setHide] = useState(false);
+
   return (
-    <Div100Vh>
+    <ParentDiv className={hide ? "hide" : ""}>
       <Content>
         <LogoContent>
           {Icons.Logo}
@@ -83,11 +92,26 @@ const Cover = () => {
           </LogoTitle>
         </LogoContent>
         <ContentOptionsDiv>
-          <ContentOptionsButton onClick={() => setAuth(true)}>Sign up</ContentOptionsButton>
-          <ContentOptionsButton onClick={() => setAuth(true)} inverse={true}>Log in</ContentOptionsButton>
+          <ContentOptionsButton
+            onClick={() => {
+              onSignIn();
+              setHide(true);
+            }}
+          >
+            Sign up
+          </ContentOptionsButton>
+          <ContentOptionsButton
+            onClick={() => {
+              onLogin();
+              setHide(true);
+            }}
+            inverse={true}
+          >
+            Log in
+          </ContentOptionsButton>
         </ContentOptionsDiv>
       </Content>
-    </Div100Vh>
+    </ParentDiv>
   );
 };
 
