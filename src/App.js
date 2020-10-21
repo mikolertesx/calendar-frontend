@@ -19,7 +19,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Layout>
+        <Layout auth={false}>
           <Switch>
             <Route path={Pages.Home} exact={true}>
               <p>Home</p>

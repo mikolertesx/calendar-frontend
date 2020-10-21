@@ -15,6 +15,9 @@ const icons = {
   month: <FontAwesomeIcon icon={faCalendar} color="white" {...iconStyle} />,
   day: <FontAwesomeIcon icon={faCalendarDay} color="white" {...iconStyle} />,
   logout: <FontAwesomeIcon icon={faSignOutAlt} color="white" {...iconStyle} />,
+  Logo: <FontAwesomeIcon icon={faCalendar} color="white" style={{
+    fontSize: "240px"
+  }}/>
 };
 
 export const TabPages = [
