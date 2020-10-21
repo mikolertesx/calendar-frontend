@@ -6,6 +6,7 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+import AuthContext from "./context/AuthContext";
 
 import Pages from "./constants/pages";
 import Layout from "./pages/layout";
@@ -19,26 +20,28 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Layout auth={false}>
-          <Switch>
-            <Route path={Pages.Home} exact={true}>
-              <p>Home</p>
-            </Route>
-            <Route path={Pages.Auth}>
-              <p>Auth</p>
-            </Route>
-            <Route path={Pages.Month}>
-              <p>Month</p>
-            </Route>
-            <Route path={Pages.Day}>
-              <p>Day</p>
-            </Route>
-            <Route path={Pages.Logout}>
+        <AuthContext>
+          <Layout auth={false}>
+            <Switch>
+              <Route path={Pages.Home} exact={true}>
+                <p>Home</p>
+              </Route>
+              <Route path={Pages.Auth}>
+                <p>Auth</p>
+              </Route>
+              <Route path={Pages.Month}>
+                <p>Month</p>
+              </Route>
+              <Route path={Pages.Day}>
+                <p>Day</p>
+              </Route>
+              <Route path={Pages.Logout} >
+                <Redirect to={Pages.Home} />
+              </Route>
               <Redirect to={Pages.Home} />
-            </Route>
-            <Redirect to={Pages.Home} />
-          </Switch>
-        </Layout>
+            </Switch>
+          </Layout>
+        </AuthContext>
       </Router>
     </div>
   );

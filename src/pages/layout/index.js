@@ -1,18 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 import Div100Vh from "react-div-100vh";
 import Auth from "../auth";
 import NavBar from "./NavigationBar";
 import Main from "./Main";
 
-const Layout = ({ children, auth }) => {
-  const fixedAuth = auth || false;
-  if (!fixedAuth) {
-    return <Auth />;
+// TODO Use context for changing state.
+const Layout = ({ children}) => {
+  const [authState] = useContext(AuthContext);
+  if (!authState) {
+    return <Auth/>;
   }
   return (
     <Div100Vh>
-      fixedAuth && <NavBar />
-      fixedAuth && <Main>{children}</Main>
+      <NavBar />
+      <Main>{children}</Main>
     </Div100Vh>
   );
 };

@@ -34,21 +34,28 @@ const Flex = styled.div`
   }
 `;
 
-const IconDiv = styled.div`
+const IconLink = styled(NavLink)`
   margin: 12px 0;
   width: calc(${Sizes.mobileSideBar} - 12px);
   height: calc(${Sizes.mobileSideBar} - 12px);
   border-radius: 5px;
   background: ${Colors.tabIconBackground};
   /* Center the element inside it. */
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background 0.3s, color 1s;
 
   ${MediaQueries.isDesktop} {
     padding: 8px 16px;
     width: auto;
     height: auto;
+  }
+
+  &.active {
+    color: ${Colors.tabIconBackground};
+    background: white;
   }
 `;
 
@@ -56,17 +63,13 @@ const NavigationBar = () => (
   <Div>
     <Flex>
       {TabPages.map((page) => (
-        <NavLink
+        <IconLink
           to={page.url}
           key={page.key}
           exact={page.url === "/"}
-          activeStyle={{
-            transform: ["scale(1.1)"],
-            transition: "transform 0.3s",
-          }}
         >
-          <IconDiv>{page.icons}</IconDiv>
-        </NavLink>
+          {page.icons}
+        </IconLink>
       ))}
     </Flex>
   </Div>

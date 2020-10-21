@@ -8,39 +8,44 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import pages from "./pages";
 
-const iconStyle = { style: { fontSize: "32px" }, color: "white" };
+const iconStyle = { style: { fontSize: "32px" } };
 
 const icons = {
-  home: <FontAwesomeIcon icon={faHome} color="white" {...iconStyle} />,
-  month: <FontAwesomeIcon icon={faCalendar} color="white" {...iconStyle} />,
-  day: <FontAwesomeIcon icon={faCalendarDay} color="white" {...iconStyle} />,
-  logout: <FontAwesomeIcon icon={faSignOutAlt} color="white" {...iconStyle} />,
-  Logo: <FontAwesomeIcon icon={faCalendar} color="white" style={{
-    fontSize: "240px"
-  }}/>
+  home: <FontAwesomeIcon icon={faHome} {...iconStyle} />,
+  month: <FontAwesomeIcon icon={faCalendar} {...iconStyle} />,
+  day: <FontAwesomeIcon icon={faCalendarDay} {...iconStyle} />,
+  logout: <FontAwesomeIcon icon={faSignOutAlt} {...iconStyle} />,
+  Logo: (
+    <FontAwesomeIcon
+      icon={faCalendar}
+      style={{
+        fontSize: "240px",
+      }}
+    />
+  ),
 };
 
 export const TabPages = [
   {
-    key: 'Home',
+    key: "Home",
     icons: icons.home,
     url: pages.Home,
   },
   {
-    key: 'Month',
+    key: "Month",
     icons: icons.month,
     url: pages.Month,
   },
   {
-    key: 'Day',
+    key: "Day",
     icons: icons.day,
     url: pages.Day,
   },
   {
-    key: 'Logout',
+    key: "Logout",
     icons: icons.logout,
     url: pages.Logout,
-  }
+  },
 ];
 
 export default icons;

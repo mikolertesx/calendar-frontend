@@ -2,10 +2,10 @@ import React from 'react';
 
 import Cover from "./cover";
 
-const AuthPage = () => {
+const AuthPage = ({onSignIn, onLogIn}) => {
   return (
     <div>
-      <Cover/>
+      <Cover logInAction={onLogIn} signInAction={onSignIn}/>
     </div>
   );
 };
