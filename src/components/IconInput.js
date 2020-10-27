@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Content = styled.div`
   cursor: text;
-  margin: auto;
+  margin: 0 auto;
   width: 90%;
   padding: 12px;
   display: flex;

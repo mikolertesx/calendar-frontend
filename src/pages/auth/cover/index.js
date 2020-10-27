@@ -1,14 +1,7 @@
 import React, { useState } from "react";
 import { ContentOptionsButton, ContentOptionsDiv } from "../shared";
-import {
-  ParentDiv,
-  Content,
-  LogoContent,
-  LogoTitle,
-  SmallPart,
-  BigPart,
-} from "./components";
-import Icons from "../../../constants/iconComponents";
+import { ParentDiv, Content } from "./components";
+import Logo from "../Logo";
 
 const Cover = ({ onSignIn, onLogin }) => {
   const [hide, setHide] = useState(false);
@@ -16,13 +9,7 @@ const Cover = ({ onSignIn, onLogin }) => {
   return (
     <ParentDiv className={hide ? "hide" : ""}>
       <Content>
-        <LogoContent>
-          {Icons.Logo}
-          <LogoTitle>
-            <SmallPart>My</SmallPart>
-            <BigPart>Calendar</BigPart>
-          </LogoTitle>
-        </LogoContent>
+        <Logo />
         <ContentOptionsDiv>
           <ContentOptionsButton
             onClick={() => {
