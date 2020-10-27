@@ -5,6 +5,7 @@ import Sizes from "../../constants/sizes";
 import MediaQueries from "../../constants/mediaQueries";
 
 const Div = styled.div`
+  height: 100%;
   padding-left: ${Sizes.mobileSideBar};
 
   ${MediaQueries.isDesktop} {

@@ -7,7 +7,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import AuthContext from "./context/AuthContext";
-
+import MonthPage from "./pages/month";
 import Pages from "./constants/pages";
 import Layout from "./pages/layout";
 
@@ -30,7 +30,7 @@ function App() {
                 <p>Auth</p>
               </Route>
               <Route path={Pages.Month}>
-                <p>Month</p>
+                <MonthPage />
               </Route>
               <Route path={Pages.Day}>
                 <p>Day</p>
