@@ -1,19 +1,13 @@
 import React, { useState } from "react";
-import Login from "./login";
-import SignIn from "./signin";
 import Vh100Div from "react-div-100vh";
 import styled from "styled-components";
-import Cover from "./cover";
+import SignPage from "./sign";
+import { Pages } from "./shared";
+import Cover from "./cover/";
 
 const Content = styled(Vh100Div)`
   position: relative;
 `;
-
-const Pages = {
-  Options: "OPTIONS",
-  LogIn: "LOGIN",
-  SignIn: "SIGNIN",
-};
 
 const AuthPage = () => {
   const [page, setPage] = useState(Pages.Options);
@@ -28,7 +22,7 @@ const AuthPage = () => {
         onSignIn={() => changePage(Pages.SignIn)}
         onLogin={() => changePage(Pages.LogIn)}
       />
-      {page === Pages.LogIn ? <Login /> : <SignIn />}
+      {page !== Pages.options && <SignPage Page={page} />}
     </Content>
   );
 };
