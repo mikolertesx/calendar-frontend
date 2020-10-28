@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import DayItem from "./DayItem";
-import Months from "../constants/months";
+import Months, { getDaysInMonth } from "../constants/months";
 import WeekDays from "../constants/weekdays";
 
 const Content = styled.div`
@@ -53,19 +53,13 @@ const CalendarDayItem = styled.div`
   margin-top: 3px;
 `;
 
-const monthMaxDays = (month) => {
-  if (month === 1) {
-    return 29;
-  }
-  return month % 2 === 0 ? 31 : 30;
-};
-
-const DayCalendar = ({ month }) => {
-  const [Month, setMonth] = useState(month || 0);
+const DayCalendar = ({ month, year }) => {
   const rightNow = new Date();
-  const firstDay = new Date(rightNow.getFullYear(), Month);
+  const [Year, setYear] = useState(year || rightNow.getFullYear());
+  const [Month, setMonth] = useState(month || 0);
+  const firstDay = new Date(Year, Month);
   const startingDay = firstDay.getDay();
-  const monthDays = monthMaxDays(month);
+  const monthDays = getDaysInMonth(Month, Year);
 
   const availableDays = [];
   let count = 1;
@@ -85,13 +79,18 @@ const DayCalendar = ({ month }) => {
     <Content>
       <Header
         onClick={() => {
-          setMonth((prevMonth) =>
-            prevMonth < Months.length - 1 ? prevMonth + 1 : 0
-          );
+          setMonth((prevMonth) => {
+            if (prevMonth + 1 >= Months.length) {
+              setYear((prevYear) => prevYear + 1);
+              return 0;
+            } else {
+              return prevMonth + 1;
+            }
+          });
         }}
       >
         <CurrentMonth>{Months[Month]}</CurrentMonth>
-        <CurrentYear>2020</CurrentYear>
+        <CurrentYear>{Year}</CurrentYear>
       </Header>
       <Calendar>
         <CalendarDays>

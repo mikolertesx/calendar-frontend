@@ -3,6 +3,9 @@ import styled from "styled-components";
 
 const Content = styled.div`
   /* background: gray; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-top: 1px solid lightgray;
   border-right: 1px solid lightgray;
   border-bottom: 1px solid lightgray;
