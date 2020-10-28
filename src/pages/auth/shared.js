@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import Colors from '../../constants/colors';
+import styled from "styled-components";
+import Colors from "../../constants/colors";
 
 export const ContentOptionsDiv = styled.div`
   width: 100%;

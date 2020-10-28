@@ -1,5 +1,5 @@
-import Sizes from './sizes';
+import Sizes from "./sizes";
 
 export default {
-  isDesktop: `@media(min-width: ${Sizes.mobileWidth})`
-}
+  isDesktop: `@media(min-width: ${Sizes.mobileWidth})`,
+};

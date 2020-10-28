@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 import MonthItem from "./MonthItem";
 
 const MonthContent = styled.div`
@@ -11,17 +11,12 @@ const MonthContent = styled.div`
 `;
 
 const MonthCalendar = () => {
-
   const content = [];
-  for(let i = 0; i < 12; i ++) {
-  content.push(<MonthItem month={i} key={`Month-${i}-item`}/>);
+  for (let i = 0; i < 12; i++) {
+    content.push(<MonthItem month={i} key={`Month-${i}-item`} />);
   }
 
-  return <MonthContent>
-    {
-      content
-    }
-  </MonthContent>
-}
+  return <MonthContent>{content}</MonthContent>;
+};
 
 export default MonthCalendar;

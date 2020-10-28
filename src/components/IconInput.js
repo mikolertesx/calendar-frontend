@@ -43,7 +43,7 @@ const Input = styled.input`
   display: block;
   flex: 1 1 auto;
   font-size: 1rem;
-  transition: font-size .3s;
+  transition: font-size 0.3s;
 
   &:focus {
     font-size: 1.1rem;
@@ -62,15 +62,17 @@ const Title = styled.h2`
 const IconInput = ({ icon, title, ...props }) => {
   const inputElement = useRef(null);
   return (
-    <Content onClick={() => {
-      inputElement.current.focus();
-    }}>
+    <Content
+      onClick={() => {
+        inputElement.current.focus();
+      }}
+    >
       <Title>{title}</Title>
       <InputFlex>
         <IconDiv>
           <FontAwesomeIcon icon={icon} style={{ fontSize: "24px" }} />
         </IconDiv>
-        <Input {...props} ref={inputElement}/>
+        <Input {...props} ref={inputElement} />
       </InputFlex>
     </Content>
   );

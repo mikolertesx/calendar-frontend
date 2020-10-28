@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import DayItem from "./DayItem";
-import Months, { getDaysInMonth } from "../constants/months";
+import Months, {
+  getDaysInMonth,
+  getFirstDayOfMonth,
+} from "../constants/months";
 import WeekDays from "../constants/weekdays";
 
 const Content = styled.div`
@@ -38,7 +41,7 @@ const Calendar = styled.div`
   display: grid;
   flex: 1 1 auto;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: 1fr repeat(6, minmax(128px, 3fr));
+  grid-template-rows: 1fr repeat(6, 3fr);
 `;
 
 const CalendarDays = styled.div`
@@ -53,14 +56,8 @@ const CalendarDayItem = styled.div`
   margin-top: 3px;
 `;
 
-const DayCalendar = ({ month, year }) => {
-  const rightNow = new Date();
-  const [Year, setYear] = useState(year || rightNow.getFullYear());
-  const [Month, setMonth] = useState(month || 0);
-  const firstDay = new Date(Year, Month);
-  const startingDay = firstDay.getDay();
-  const monthDays = getDaysInMonth(Month, Year);
-
+// Todo Rework the way each element is rendered.
+const generateDays = (startingDay, monthDays) => {
   const availableDays = [];
   let count = 1;
   for (let i = 0; i < 42; i++) {
@@ -74,6 +71,16 @@ const DayCalendar = ({ month, year }) => {
       count++;
     }
   }
+  return availableDays;
+};
+
+const DayCalendar = ({ month, year }) => {
+  const [Year, setYear] = useState(year || new Date().getFullYear());
+  const [Month, setMonth] = useState(month || 0);
+  const startingDay = getFirstDayOfMonth(Month, Year);
+  const monthDays = getDaysInMonth(Month, Year);
+
+  const availableDays = generateDays(startingDay, monthDays);
 
   return (
     <Content>
