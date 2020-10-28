@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import DayItem from "./DayItem";
+import Months from "../constants/months";
 import WeekDays from "../constants/weekdays";
 
 const Content = styled.div`
@@ -33,10 +34,11 @@ const CurrentYear = styled.h2`
 `;
 
 const Calendar = styled.div`
+  overflow: auto;
   display: grid;
   flex: 1 1 auto;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: 1fr repeat(5, 2fr);
+  grid-template-rows: 1fr repeat(6, minmax(128px, 3fr));
 `;
 
 const CalendarDays = styled.div`
@@ -51,16 +53,44 @@ const CalendarDayItem = styled.div`
   margin-top: 3px;
 `;
 
-const DayCalendar = () => {
+const monthMaxDays = (month) => {
+  if (month === 1) {
+    return 29;
+  }
+  return month % 2 === 0 ? 31 : 30;
+};
+
+const DayCalendar = ({ month }) => {
+  const [Month, setMonth] = useState(month || 0);
+  const rightNow = new Date();
+  const firstDay = new Date(rightNow.getFullYear(), Month);
+  const startingDay = firstDay.getDay();
+  const monthDays = monthMaxDays(month);
+
   const availableDays = [];
-  for (let i = 0; i < 35; i++) {
-    availableDays.push(<DayItem key={`day-calendar-${i}`} day={i} />);
+  let count = 1;
+  for (let i = 0; i < 42; i++) {
+    availableDays.push(
+      <DayItem
+        key={`day-calendar-${i}`}
+        day={i >= startingDay && count <= monthDays ? count : ""}
+      />
+    );
+    if (i >= startingDay) {
+      count++;
+    }
   }
 
   return (
     <Content>
-      <Header>
-        <CurrentMonth>January</CurrentMonth>
+      <Header
+        onClick={() => {
+          setMonth((prevMonth) =>
+            prevMonth < Months.length - 1 ? prevMonth + 1 : 0
+          );
+        }}
+      >
+        <CurrentMonth>{Months[Month]}</CurrentMonth>
         <CurrentYear>2020</CurrentYear>
       </Header>
       <Calendar>
