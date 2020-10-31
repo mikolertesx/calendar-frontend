@@ -10,11 +10,8 @@ const Content = styled(Link)`
   align-items: center;
   justify-content: center;
   text-align: center;
+  background: white;
   color: black;
-
-  &:nth-child(even) {
-    background: lightgray;
-  }
 
   &.unavailable {
     background: gray;
@@ -22,18 +19,30 @@ const Content = styled(Link)`
     border-bottom: none;
     border-top: none;
   }
+
+  &.disabled {
+    background: white;
+    color: lightgray;
+  }
 `;
 
 const ContentUnavailable = styled.div`
   background: white;
 `;
 
-const MonthItem = ({ day }) => {
+const MonthItem = ({ day, month, year, disabled }) => {
   if (!day) {
     return <ContentUnavailable />;
   }
+
+  let newPage = Pages.Day.replace(":day", day).replace(":month", month).replace(":year", year);
+
+  if (disabled) {
+    newPage = "#";
+  }
+
   return (
-    <Content className={day ? "" : "unavailable"} to={Pages.Day.replace(":day", day)}>
+    <Content className={disabled ? "disabled" : ""} to={newPage}>
       <p>{day}</p>
     </Content>
   );

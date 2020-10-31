@@ -56,15 +56,29 @@ const CalendarDayItem = styled.div`
   margin-top: 3px;
 `;
 
-// Todo Rework the way each element is rendered.
-const generateDays = (startingDay, monthDays) => {
+const generateDays = (month, year) => {
   const availableDays = [];
+  const monthDays = getDaysInMonth(month, year);
+  const prevMonthDays = getDaysInMonth(
+    month !== 0 ? month - 1 : 11,
+    month !== 0 ? year : year - 1
+  );
+  const startingDay = getFirstDayOfMonth(month, year);
   let count = 1;
   for (let i = 0; i < 42; i++) {
     availableDays.push(
       <MonthItem
         key={`day-calendar-${i}`}
-        day={i >= startingDay && count <= monthDays ? count : ""}
+        day={
+          i >= startingDay && count <= monthDays
+            ? count
+            : i <= startingDay
+            ? prevMonthDays - startingDay + i + 1
+            : ""
+        }
+        disabled={i < startingDay}
+        month={month}
+        year={year}
       />
     );
     if (i >= startingDay) {
@@ -73,15 +87,10 @@ const generateDays = (startingDay, monthDays) => {
   }
   return availableDays;
 };
-
 const MonthCalendar = ({ month, year }) => {
   const [Year, setYear] = useState(year || new Date().getFullYear());
-  const [Month, setMonth] = useState(month || 0);
-  const startingDay = getFirstDayOfMonth(Month, Year);
-  const monthDays = getDaysInMonth(Month, Year);
-
-  const availableDays = generateDays(startingDay, monthDays);
-
+  const [Month, setMonth] = useState(month || new Date().getMonth());
+  const availableDays = generateDays(Month, Year);
   return (
     <Content>
       <Header
@@ -112,5 +121,4 @@ const MonthCalendar = ({ month, year }) => {
     </Content>
   );
 };
-
 export default MonthCalendar;
