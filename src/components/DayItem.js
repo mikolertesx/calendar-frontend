@@ -6,9 +6,6 @@ const Content = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  border-top: 1px solid lightgray;
-  border-right: 1px solid lightgray;
-  border-bottom: 1px solid lightgray;
   text-align: center;
   color: black;
 
@@ -24,7 +21,14 @@ const Content = styled.div`
   }
 `;
 
+const ContentUnavailable = styled.div`
+  background: white;
+`;
+
 const DayItem = ({ day }) => {
+  if (!day) {
+    return <ContentUnavailable />;
+  }
   return (
     <Content className={day ? "" : "unavailable"}>
       <p>{day}</p>
