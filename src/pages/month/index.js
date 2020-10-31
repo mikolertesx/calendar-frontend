@@ -1,8 +1,10 @@
 import React from "react";
-import MonthCalendar from "../../components/MonthCalendar";
+import DayCalendar from "../../components/MonthCalendar";
 
-const HomePage = () => {
-  return <MonthCalendar />
+const DayPage = () => {
+  return <DayCalendar>
+
+  </DayCalendar>
 }
 
-export default HomePage;
+export default DayPage;
