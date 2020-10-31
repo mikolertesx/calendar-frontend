@@ -1,8 +1,11 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+import Pages from "../constants/pages";
 
-const Content = styled.div`
+const Content = styled(Link)`
   /* background: gray; */
+  text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,7 +33,7 @@ const MonthItem = ({ day }) => {
     return <ContentUnavailable />;
   }
   return (
-    <Content className={day ? "" : "unavailable"}>
+    <Content className={day ? "" : "unavailable"} to={Pages.Day.replace(":day", day)}>
       <p>{day}</p>
     </Content>
   );
