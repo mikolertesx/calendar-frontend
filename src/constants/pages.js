@@ -1,7 +1,7 @@
 export default {
   Home: "/",
+  Year: "/year",
   Month: "/month",
-  Day: "/day",
   Login: "/auth",
   Logout: "/logoff",
   Register: "/auth",

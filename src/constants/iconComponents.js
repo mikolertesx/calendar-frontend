@@ -12,8 +12,8 @@ const iconStyle = { style: { fontSize: "32px" } };
 
 const icons = {
   home: <FontAwesomeIcon icon={faHome} {...iconStyle} />,
-  month: <FontAwesomeIcon icon={faCalendar} {...iconStyle} />,
-  day: <FontAwesomeIcon icon={faCalendarDay} {...iconStyle} />,
+  year: <FontAwesomeIcon icon={faCalendar} {...iconStyle} />,
+  month: <FontAwesomeIcon icon={faCalendarDay} {...iconStyle} />,
   logout: <FontAwesomeIcon icon={faSignOutAlt} {...iconStyle} />,
   Logo: (
     <FontAwesomeIcon
@@ -32,14 +32,14 @@ export const TabPages = [
     url: pages.Home,
   },
   {
+    key: "Year",
+    icons: icons.year,
+    url: pages.Year,
+  },
+  {
     key: "Month",
     icons: icons.month,
     url: pages.Month,
-  },
-  {
-    key: "Day",
-    icons: icons.day,
-    url: pages.Day,
   },
   {
     key: "Logout",

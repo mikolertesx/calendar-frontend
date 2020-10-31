@@ -30,10 +30,10 @@ function App() {
               <Route path={Pages.Auth}>
                 <p>Auth</p>
               </Route>
-              <Route path={Pages.Month}>
+              <Route path={Pages.Year}>
                 <YearPage />
               </Route>
-              <Route path={Pages.Day}>
+              <Route path={Pages.Month}>
                 <MonthPage />
               </Route>
               <Route path={Pages.Logout} >
