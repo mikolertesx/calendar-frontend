@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ContentOptionsButton, ContentOptionsDiv } from "../shared";
+import { ContentOptionsButton, ContentOptionsDiv } from "../components";
 import { ParentDiv, Content } from "./components";
 import Logo from "../Logo";
 

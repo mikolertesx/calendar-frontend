@@ -1,13 +1,10 @@
-import React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-
-import { TabPages } from "../../constants/iconComponents";
 import MediaQueries from "../../constants/mediaQueries";
 import Colors from "../../constants/colors";
 import Sizes from "../../constants/sizes";
 
-const Div = styled.div`
+export const Div = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -20,8 +17,7 @@ const Div = styled.div`
     width: 100%;
   }
 `;
-
-const Flex = styled.div`
+export const Flex = styled.div`
   display: flex;
   height: 100%;
   align-items: center;
@@ -33,8 +29,7 @@ const Flex = styled.div`
     justify-content: space-around;
   }
 `;
-
-const IconLink = styled(NavLink)`
+export const IconLink = styled(NavLink)`
   margin: 12px 0;
   width: calc(${Sizes.mobileSideBar} - 12px);
   height: calc(${Sizes.mobileSideBar} - 12px);
@@ -58,21 +53,3 @@ const IconLink = styled(NavLink)`
     background: white;
   }
 `;
-
-const NavigationBar = () => (
-  <Div>
-    <Flex>
-      {TabPages.map((page) => (
-        <IconLink
-          to={page.url}
-          key={page.key}
-          exact={page.url === "/"}
-        >
-          {page.icons}
-        </IconLink>
-      ))}
-    </Flex>
-  </Div>
-);
-
-export default NavigationBar;

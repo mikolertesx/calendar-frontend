@@ -1,6 +1,6 @@
 import React from "react";
 import Icons from "../../constants/iconComponents";
-import { LogoTitle, LogoContent, SmallPart, BigPart } from "./shared";
+import { LogoTitle, LogoContent, SmallPart, BigPart } from "./components";
 
 const Logo = () => {
   return (

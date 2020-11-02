@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Vh100Div from "react-div-100vh";
 import styled from "styled-components";
 import SignPage from "./sign";
-import { Pages } from "./shared";
+import { Pages } from "./components";
 import Cover from "./cover/";
 
 const Content = styled(Vh100Div)`

@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-import Sizes from "../../constants/sizes";
-import MediaQueries from "../../constants/mediaQueries";
+import Sizes from "../../../constants/sizes";
+import MediaQueries from "../../../constants/mediaQueries";
 
 const Div = styled.div`
   height: 100%;
