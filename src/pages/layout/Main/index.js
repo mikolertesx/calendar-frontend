@@ -9,6 +9,7 @@ const Div = styled.div`
   padding-left: ${Sizes.mobileSideBar};
 
   ${MediaQueries.isDesktop} {
+    height: calc(100% - ${Sizes.mobileSideBar});
     padding-left: 0;
     padding-top: ${Sizes.mobileSideBar};
   }

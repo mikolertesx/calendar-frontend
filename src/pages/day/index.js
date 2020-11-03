@@ -1,7 +1,16 @@
 import React from "react";
-import Months from "../../constants/months";
-import { getWeekdayString } from "../../constants/weekdays";
 import { useParams, useHistory } from "react-router-dom";
+import { getWeekdayString } from "../../constants/weekdays";
+import {
+  DayContent,
+  FormatedDate,
+  EventPlannedH3,
+  EventList,
+  CircularButton,
+  GoBackButton,
+} from "./components";
+import DayItem from "../../components/DayItem";
+import Months from "../../constants/months";
 
 const DayPage = () => {
   const { day, month, year } = useParams();
@@ -13,24 +22,31 @@ const DayPage = () => {
   };
 
   return (
-    <div>
-      <button onClick={goBackHandler}>Go back</button>
-      <h2>
+    <DayContent>
+      <GoBackButton onClick={goBackHandler}>&#60;</GoBackButton>
+      <FormatedDate>
         {currentWeekday} {day} of {Months[month]}, {year}
-      </h2>
+      </FormatedDate>
       <div>
-        <h3>Events planned</h3>
-        <ul style={{marginLeft: "24px"}}>
-          <li>Go out</li>
-          <li>Do something cool</li>
-          <li>Redeem myself</li>
-        </ul>
+        <EventPlannedH3>Events planned</EventPlannedH3>
+        <EventList>
+          <DayItem
+            index={0}
+            description="Just another reminder"
+            checked={true}
+          />
+          <DayItem
+            description="Just another really really really long reminder."
+            checked={false}
+          />
+          <DayItem description="Just another reminder" checked={true} />
+        </EventList>
       </div>
       <div>
         {/* Should use a pop-up for this. */}
-        <button>Add Event</button>
+        <CircularButton>+</CircularButton>
       </div>
-    </div>
+    </DayContent>
   );
 };
 
