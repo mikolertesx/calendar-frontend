@@ -47,14 +47,13 @@ class Reminder {
     // Figure out how to update this.
   }
   static getReminders(date) {
-    console.log(date.getFullYear(), date.getMonth(), date.getDate());
     const currentItemsString = localStorage.getItem("reminders");
     if (!currentItemsString) return [];
     const currentItems = currentItemsString
       ? JSON.parse(localStorage.getItem("reminders"))
       : {};
     const dailyItems =
-      currentItems[date.getFullYear()][date.getMonth()][date.getUTCDay()];
+      currentItems[date.getFullYear()][date.getMonth()][date.getDate()];
     return dailyItems;
   }
 }
