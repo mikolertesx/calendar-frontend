@@ -35,7 +35,9 @@ const MonthItem = ({ day, month, year, disabled }) => {
     return <ContentUnavailable />;
   }
 
-  let newPage = Pages.Day.replace(":day", day).replace(":month", month).replace(":year", year);
+  let newPage = Pages.Day.replace(":day", day)
+    .replace(":month", month)
+    .replace(":year", year);
 
   if (disabled) {
     newPage = "#";

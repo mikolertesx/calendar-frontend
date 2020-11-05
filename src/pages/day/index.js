@@ -11,6 +11,7 @@ import {
 } from "./components";
 import DayItem from "../../components/DayItem";
 import Months from "../../constants/months";
+import Reminder from "../../models/Reminder";
 
 const DayPage = () => {
   const { day, month, year } = useParams();
@@ -21,6 +22,13 @@ const DayPage = () => {
     history.goBack();
   };
 
+  const reminders = Reminder.getReminders(new Date(year, month, day));
+  const renderedReminders = reminders
+    ? reminders.map((reminder) => (
+        <DayItem description="Recordatorio" key={reminder.id} />
+      ))
+    : null;
+
   return (
     <DayContent>
       <GoBackButton onClick={goBackHandler}>&#60;</GoBackButton>
@@ -29,18 +37,7 @@ const DayPage = () => {
       </FormatedDate>
       <div>
         <EventPlannedH3>Events planned</EventPlannedH3>
-        <EventList>
-          <DayItem
-            index={0}
-            description="Just another reminder"
-            checked={true}
-          />
-          <DayItem
-            description="Just another really really really long reminder."
-            checked={false}
-          />
-          <DayItem description="Just another reminder" checked={true} />
-        </EventList>
+        <EventList>{renderedReminders}</EventList>
       </div>
       <div>
         {/* Should use a pop-up for this. */}

@@ -72,7 +72,7 @@ const generateDays = (month, year) => {
         day={
           i >= startingDay && count <= monthDays
             ? count
-            : i <= startingDay
+            : i + 1 <= startingDay
             ? prevMonthDays - startingDay + i + 1
             : ""
         }
