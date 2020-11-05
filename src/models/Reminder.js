@@ -7,6 +7,9 @@ class Reminder {
     this.date = date;
     this.value = value;
   }
+  find() {
+
+  }
   save() {
     // Figure out how to save this.
     let previousItems = JSON.parse(localStorage.getItem("reminders")) || {};
@@ -37,7 +40,6 @@ class Reminder {
         value: this.value,
       });
     }
-    console.log(currentItems);
     localStorage.setItem("reminders", JSON.stringify(currentItems));
   }
   remove() {
@@ -45,6 +47,8 @@ class Reminder {
   }
   update(newValue) {
     // Figure out how to update this.
+    this.value = newValue;
+    this.save();
   }
   static getReminders(date) {
     const currentItemsString = localStorage.getItem("reminders");
