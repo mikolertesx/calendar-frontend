@@ -26,7 +26,9 @@ export const EventList = styled.ul`
 `;
 
 export const CircularButton = styled.button`
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 24px auto;
   color: white;
   background: ${Colors.coverOption};
@@ -40,6 +42,7 @@ export const CircularButton = styled.button`
 
   &:hover {
     background: white;
+    cursor: pointer;
     color: ${Colors.coverOption};
   }
 `;
@@ -51,4 +54,8 @@ export const GoBackButton = styled.button`
   color: white;
   margin: 0;
   border: none;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
